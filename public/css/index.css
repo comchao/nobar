@@ -1,0 +1,21 @@
+/*.container{*/
+    /*background-color: white;*/
+/*}*/
+
+/*.form-control {*/
+    /*margin-top: -0.5em;*/
+    /*margin-bottom: 1em;*/
+/*}*/
+
+.section {
+    background-color: white;
+    padding: 1em 3em;
+}
+
+.margin-bottom {
+    margin-bottom: 1vh;
+}
+
+input.form-control.flatpickr-input{
+    background:white;
+}
