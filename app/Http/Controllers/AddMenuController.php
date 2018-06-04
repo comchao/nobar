@@ -20,15 +20,18 @@ class AddMenuController extends Controller
      */
     public function index()
     {
+
         //use App\Model\Menus
 
         $category = foodCategory::query()->get();
+        dd($category);
         // dd($category);
         //ความสัมพัน
         $query = Menus::with('foodCategory')->get();
-//        dd($query);
+
+        dd($query);
 //        return view('layouts.addmenu',['data' => $query]);
-        return view('addmenu', ['data' => $query  ,'foodCategory'=>$category ]);
+        return view('addmenu', ['data' => $query  ]);
 
     }
 

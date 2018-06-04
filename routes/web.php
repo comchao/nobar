@@ -42,3 +42,6 @@ Route::get('/addorder', function () {
 });
 Route::get('addorder','AddOrderController@index'); // list menu
 Route::post('add/order','AddOrderController@store');  // add  order
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
