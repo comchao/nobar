@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Siam Express Delivery</title>
+    <title></title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -36,7 +36,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Siam Express Delivery
+
                 </a>
             </div>
 
@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>

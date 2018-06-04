@@ -24,6 +24,7 @@ class AddMenuController extends Controller
         //use App\Model\Menus
 
         $foodCategory = foodCategory::query()->get();
+        
         // dd($category);
         //ความสัมพัน
         $query = Menus::with('foodCategory')->get();

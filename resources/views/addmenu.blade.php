@@ -1,90 +1,3 @@
-{{--@extends('layouts.app')--}}
-
-{{--@section('content')--}}
-{{--<div class="container">--}}
-{{--<div class="row justify-content-center">--}}
-{{--<div class="col-md-12">--}}
-{{--<div class="card">--}}
-{{--<div class="card-header">เมนูอาหาร</div>--}}
-
-{{--<div class="card-body">--}}
-{{--@if (session('status'))--}}
-{{--<div class="alert alert-success">--}}
-{{--{{ session('status') }}--}}
-{{--</div>--}}
-{{--@endif--}}
-{{--<form action="{{url('/add/menu')}}" method="post">--}}
-{{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
-{{--<div class="form-group row">--}}
-{{--<label for="staticEmail" class="col-sm-2 col-form-label">รายการอาหาร</label>--}}
-{{--<div class="col-sm-6">--}}
-{{--<input type="text" name="menu" class="form-control" placeholder="menu" required>--}}
-
-{{--</div>--}}
-{{--</div>--}}
-
-{{--<div class="form-group row">--}}
-{{--<label for="staticEmail" class="col-sm-2 col-form-label">ราคา</label>--}}
-{{--<div class="col-sm-6">--}}
-{{--<input type="text" name="menu" class="form-control" placeholder="price" required>--}}
-
-{{--</div>--}}
-{{--</div>--}}
-
-
-{{--<div class="form-group row">--}}
-{{--<label for="inputPassword" class="col-sm-2 col-form-label">ประเภทอาหาร</label>--}}
-{{--<div class="col-sm-6">--}}
-{{--<select name="cars" class="form-control">--}}
-{{--@foreach($foodCategory as $NewfoodCategory)--}}
-
-{{--<option value="{{$NewfoodCategory->foodcategoryid}}">{{$NewfoodCategory->foodcategory_Name}}</option>--}}
-{{--<option value="{{ค่าที่เก็บลงฐาน}}"> แสดงชื่อ</option>--}}
-{{--@endforeach--}}
-
-{{--</select>--}}
-{{--</div>--}}
-
-{{--<center><input type="submit" class="btn btn-primary" value="บันทึก"></center>--}}
-{{--</div>--}}
-
-{{--</form>--}}
-
-
-{{--<table class="table table-striped">--}}
-{{--<tr>--}}
-{{--<th>ลำดับ</th>--}}
-{{--<th>รายการอาหาร</th>--}}
-{{--<th>ราคา</th>--}}
-{{--<th>ประเภทอาหาร</th>--}}
-{{--<th>วันที่เพิ่มข้อมูล</th>--}}
-{{--<th>แก้ไข</th>--}}
-{{--<th>ลบ</th>--}}
-{{--</tr>--}}
-
-
-{{--</table>--}}
-
-{{--{{ $data->links() }}--}}
-
-
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--@endsection--}}
-{{--<script type="text/javascript">--}}
-{{--function confirm_delete() {--}}
-{{--return confirm('ต้องการลบข้อมูลใช่หรือไม่');--}}
-{{--}--}}
-
-{{--function confirm_edit() {--}}
-{{--return confirm('ต้องการแก้ไขข้อมูลใช่หรือไม่');--}}
-{{----}} {{----}}
-{{--</script>--}}
-
-
 
 @extends('layouts.index')
 @section('content')
@@ -92,8 +5,6 @@
         <div class="box-header with-border">
             <h3 class="box-title">เพิ่มเมนูอาหาร</h3>
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
 
         <div class="card-body">
             @if (session('status'))
@@ -119,7 +30,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">ประเภทอาหาร</label>
-                                <select name="foodcategoryid" class="form-control">
+                                <select name="foodcategoryid" class="form-control" required>
+                                    <option value="">เลือกประเภทอาหาร</option>
                                     @foreach($foodCategory as $NewfoodCategory)
 
                                         <option value="{{$NewfoodCategory->foodcategoryid}}">{{$NewfoodCategory->foodcategory_Name}}</option>
@@ -128,6 +40,8 @@
 
                                 </select>
                             </div>
+                            <div class="form-group">
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -135,15 +49,11 @@
                     </div>
 
                 </div>
-
                 <!-- /.box-body -->
-
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
-
-
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">เมนูอาหาร</h3>
@@ -207,7 +117,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> </div>
+    </div>
 
             @endsection
             @push('scripts')
@@ -225,6 +136,7 @@
                     })
                 </script>
     @endpush
+
 
 
 

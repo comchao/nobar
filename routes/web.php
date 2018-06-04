@@ -45,3 +45,13 @@ Route::post('add/order','AddOrderController@store');  // add  order
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+//orders
+Route::get('show/update/order/{id}','AddOrderController@show');
+Route::post('update/order/{id}','AddOrderController@update');
+Route::get('delete/order/{id}','AddOrderController@destroy');

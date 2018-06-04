@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\foodCategory;
 use App\Model\Menus;
 use App\Model\Orders;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class AddOrderController extends Controller
 
         $query = Menus::with('foodCategory')->get();
 
-        $Orders = Orders::query()->get();
+        $Orders = Orders::with('Menus')->get();
 //        dd($query);
 //        return view('layouts.addmenu',['data' => $query]);
         return view('addorder', ['data' => $query ,'orders' => $Orders]);
@@ -71,7 +72,14 @@ class AddOrderController extends Controller
      */
     public function show($id)
     {
-        //
+
+        //use App\Model\Menus
+        $Orders = Orders::with('Menus')
+            ->where('id','=',$id)
+            ->get();
+        $category = foodCategory::query()->get();
+        return view('edit_oder', ['orders' => $Orders,'category'=>$category]);
+
     }
 
     /**
@@ -94,7 +102,11 @@ class AddOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $query = Orders::find($id);
+        $query->amount = $request->get('amount');
+        $query->save();
+        return redirect()->action('AddOrderController@index');
+
     }
 
     /**
@@ -105,6 +117,9 @@ class AddOrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $query = Orders::find($id);
+        $query->delete();
+        return redirect()->action('AddOrderController@index');
+
     }
 }

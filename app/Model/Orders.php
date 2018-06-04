@@ -13,6 +13,6 @@ class Orders extends Model
     public function Menus()
     {
         //สร้างความสัมพันธ์  ตาราง Menus และ Orders
-        return $this->hasMany(Menus::class,'id_menus','id');
+        return $this->hasMany(Menus::class,'id','id_menus');
     }
 }

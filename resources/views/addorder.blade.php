@@ -4,7 +4,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">รายการสั่งอาหาร</h3>
+                    <h3 class="box-title">สั่งอาหาร</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -37,7 +37,7 @@
                                                 <td><input type= "text" value="{{$list->price}}" name="price"> </td> -->
                                                 <td>{{$list->menu}}  </td>
                                                 <td>{{$list->price}}  </td>
-                                                <td><input value="" type="number" class="input-no-spinner" name="amount"></td>
+                                                <td><input value="" type="number" class="form-control" name="amount"></td>
 
                                                 <td>
                                                     <button type="submit" class="btn btn-primary">สั่งอาหาร</button>
@@ -92,12 +92,20 @@
                                         <tr>
 
                                             <td>{{$i}} </td>
-                                            <td>{{$listorders->id_menus}}  </td>
-                                            <td>{{$listorders->id_menus}}</td>
+                                            <td>{{$listorders->Menus[0]['menu']}}  </td>
+                                            <td>{{$listorders->Menus[0]['price']}}</td>
                                             <td>{{$listorders->amount}}</td>
-                                            <td><button type="button" class="btn btn-block btn-warning">แก้ไข</button></td>
-                                            <td><button type="button" class="btn btn-block btn-danger">ยกเลิก</button></td>
-
+                                            <td>
+                                                <form action="{{url('/show/update/order/'.$listorders->id)}}" method="get">
+                                                <button type="submit" class="btn btn-block btn-warning"  onclick="return confirm_delete()"> แก้ไข
+                                                </button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form action="{{url('/delete/order/'.$listorders->id)}}" method="get">
+                                                <button type="submit" class="btn btn-block btn-danger">ยกเลิก</button>
+                                                </form>
+                                            </td>
 
                                         </tr>
                                         <?php $i++ ?>
