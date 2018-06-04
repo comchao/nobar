@@ -12,17 +12,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('admin', function () {
-    return view('admin_template');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/master', function () {
-    return view('master');
+Route::get('/showmenu', function () {
+    return view('showmenu');
 });
+
+Route::get('/addmenu', function () {
+    return view('addmenu');
+});
+//หน้า add munu
+Route::post('update/add/menu/{id}','AddMenuController@update'); //update
+Route::get('addmenu','AddMenuController@index'); // list menu
+Route::post('add/menu','AddMenuController@store'); // add  menu
+Route::get('show/update/addmenu/{id}','AddMenuController@show'); //  show  update
+Route::get('delete/addmenu/{id}','AddMenuController@destroy'); // delete  menu
+
+
+
+//add order
+Route::get('/addorder', function () {
+    return view('addorder');
+});
+Route::get('addorder','AddOrderController@index'); // list menu
+Route::post('add/order','AddOrderController@store');  // add  order
