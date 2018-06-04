@@ -23,15 +23,12 @@ class AddMenuController extends Controller
 
         //use App\Model\Menus
 
-        $category = foodCategory::query()->get();
-        dd($category);
+        $foodCategory = foodCategory::query()->get();
         // dd($category);
         //ความสัมพัน
         $query = Menus::with('foodCategory')->get();
-
-        dd($query);
 //        return view('layouts.addmenu',['data' => $query]);
-        return view('addmenu', ['data' => $query  ]);
+        return view('addmenu', ['data' => $query  , 'foodCategory' => $foodCategory]);
 
     }
 
@@ -104,16 +101,24 @@ class AddMenuController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
         $menu = $request->get('menu');
         $price = $request->get('price');
         $foodcategoryid = $request->get('foodcategoryid');
+
         $data = Menus::find($id);
         $data->menu = $menu;
         $data->price = $price;
         $data->foodcategoryid = $foodcategoryid;
         $data->save();
 
-        return redirect()->action('AddMenuController@index');
+        $query = Menus::find($id);
+        $category = foodCategory::query()->get();
+
+//        return view('layouts.addmenu',['data' => $query]);
+        return view('editmenu', ['data' => $query,'category' => $category]);
+
     }
 
     /**

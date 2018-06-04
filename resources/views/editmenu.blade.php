@@ -24,15 +24,12 @@
                             <label for="inputPassword" >ประเภทอาหาร</label>
 
 
-                            <select name="cars" class="form-control">
-                                @php $selected = old('cars',$data['foodcategoryid']); @endphp
-                                @if($selected!=null && !starts_with($selected,"id:"))
-                                    <option selected>{{$selected}}</option>
-                                @endif
+                            <select name="foodcategoryid" class="form-control">
+                                    {{--{{$data['foodcategoryid']}}--}}
                                 @foreach($category as $NewfoodCategory)
                                     {{--<option value="{{$NewfoodCategory->foodcategoryid}}">{{$NewfoodCategory->foodcategory_Name}}</option>--}}
                                     {{--แบบแก้ไข--}}
-                                    <option {{"id:".$NewfoodCategory->id==$selected?'selected':''}}  value="id:{{$NewfoodCategory->id}}">{{$NewfoodCategory->foodcategory_Name}}</option>
+                                    <option value="{{$NewfoodCategory->foodcategoryid}}">{{$NewfoodCategory->foodcategory_Name}}</option>
 
                                     {{--<option value="{{ค่าที่เก็บลงฐาน}}"> แสดงชื่อ</option>--}}
                                 @endforeach
